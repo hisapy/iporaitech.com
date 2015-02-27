@@ -1,3 +1,46 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body[data-controller='home']{
+  padding: 10px;
+  margin: 0;
+  height: 100%;
+  
+  background: -webkit-linear-gradient(105deg, #fff, #fff, #6bbffc, #dffffd);
+  background: -o-linear-gradient(105deg, #fff, #fff, #6bbffc, #dffffd);
+  background: linear-gradient(105deg, #fff, #fff, #6bbffc, #dffffd);
+  
+  background-size: 1600% 1600%;
+  
+  -webkit-animation: ChangeBgGradient 60s 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) infinite;
+  -moz-animation: ChangeBgGradient 60s 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) infinite;
+  animation: ChangeBgGradient 60s 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) infinite;
+  
+  @-webkit-keyframes ChangeBgGradient {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @-moz-keyframes ChangeBgGradient {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @keyframes ChangeBgGradient { 
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  
+  #main{
+    background-image:image-url("logo-iporaitech-1930x1025.png");
+    background-repeat: no-repeat; 
+    background-position: left center;
+    background-size: contain;
+    height: auto !important;
+    min-height:100%;
+  }
+}
+
+@-webkit-keyframes glint { 0% { background-position: 0 0; } 100% { background-position: 360px 0; } }

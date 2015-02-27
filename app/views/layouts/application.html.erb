@@ -11,8 +11,8 @@
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
-		<div class="container">
+	<body data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+		<div id="main" class="container">
 			<div class="row">
 				<div class="col-xs-12">
 					<%= yield %>

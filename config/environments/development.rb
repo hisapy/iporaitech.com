@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # Different path for development asssets when precompiling locally
+  config.assets.prefix = "/dev-assets"
 end
