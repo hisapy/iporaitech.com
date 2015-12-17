@@ -3,8 +3,8 @@ web:
   ports:
     - "3002:80"
     - "2224:22"
-  links:
-    - db
+  # links:
+  #   - db
   environment:
     RAILS_ENV: production
     PASSENGER_APP_ENV: production
