@@ -8,14 +8,14 @@ web:
   environment:
     RAILS_ENV: production
     PASSENGER_APP_ENV: production
-  volumes:
-    - /mnt/volumes/iporaitech/home/app/webapp/log:/home/app/webapp/log
-    - /mnt/volumes/iporaitech/var/log:/var/log
+  # volumes:
+  #   - /mnt/volumes/iporaitech/home/app/webapp/log:/home/app/webapp/log
+  #   - /mnt/volumes/iporaitech/var/log:/var/log
 
-db:
-  image: postgres:9.4.4
-  ports:
-    - "55434:5432"
-  volumes:
-    - /mnt/volumes/iporaitech/db/var/lib/postgresql/data:/var/lib/postgresql/data
-    - /mnt/volumes/iporaitech/db/var/log:/var/log
+# db:
+#   image: postgres:9.4.4
+#   ports:
+#     - "55434:5432"
+#   volumes:
+#     - /mnt/volumes/iporaitech/db/var/lib/postgresql/data:/var/lib/postgresql/data
+#     - /mnt/volumes/iporaitech/db/var/log:/var/log
