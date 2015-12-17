@@ -1,8 +1,8 @@
 web:
   image: ec2-54-175-26-39.compute-1.amazonaws.com:8080/iporaitech_web:0.1.0
   ports:
-    - "3003:80"
-    - "2225:22"
+    - "3002:80"
+    - "2224:22"
   links:
     - db
   environment:
@@ -14,7 +14,7 @@ web:
 db:
   image: postgres:9.4.4
   ports:
-    - "55435:5432"
+    - "55434:5432"
   volumes:
     - /mnt/volumes/iporaitech/logs/var:/var/logs
     - /mnt/volumes/iporaitech/db:/var/lib/postgresql/data
