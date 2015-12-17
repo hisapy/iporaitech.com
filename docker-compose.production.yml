@@ -1,5 +1,5 @@
 web:
-  image: ec2-54-175-26-39.compute-1.amazonaws.com:8080/iporaitech_web:0.1.0
+  image: ec2-54-175-26-39.compute-1.amazonaws.com:8080/iporaitech_web:latest
   ports:
     - "3002:80"
     - "2224:22"
