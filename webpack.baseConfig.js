@@ -17,37 +17,16 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "template.html",
-      // favicon: "favicon.ico",
       language: "es"
     }),
     new HtmlWebpackPlugin({
       template: "template.html",
       filename: "en/index.html",
-      // favicon: "favicon.ico",
       language: "en"
     }),
     new FaviconsWebpackPlugin({
-      // Your source logo
       logo: "./images/favicon.png",
-      // favicon background color (see https://github.com/haydenbleasel/favicons#usage)
-      background: "#60a6b4",
-      // favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-      title: "Iporaitech",
-
-      // generated absolute path in order to make it work with generated en/index.html
-      prefix: "/icons-[hash]/",
-
-      // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: true,
-        favicons: true,
-        firefox: true,
-        opengraph: true,
-        twitter: true,
-        windows: true
-      }
+      background: "#fff"
     })
   ],
   module: {

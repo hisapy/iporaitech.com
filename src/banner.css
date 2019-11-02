@@ -1,0 +1,78 @@
+html,
+body {
+  padding: 10px;
+  margin: 0;
+  height: 100%;
+  background: -webkit-linear-gradient(105deg, #fff, #fff, #6bbffc, #dffffd);
+  background: -o-linear-gradient(105deg, #fff, #fff, #6bbffc, #dffffd);
+  background: linear-gradient(105deg, #fff, #fff, #6bbffc, #dffffd);
+  background-size: 1600% 1600%;
+  -webkit-animation: ChangeBgGradient 60s 1s cubic-bezier(0.42, 0, 0.58, 1)
+    infinite;
+  -moz-animation: ChangeBgGradient 60s 1s cubic-bezier(0.42, 0, 0.58, 1)
+    infinite;
+  animation: ChangeBgGradient 60s 1s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+@-webkit-keyframes ChangeBgGradient,
+body @-webkit-keyframes ChangeBgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes ChangeBgGradient,
+body @-moz-keyframes ChangeBgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes ChangeBgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes glint {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 360px 0;
+  }
+}
+
+html body #main {
+  background-image: url("images/logo-iporaitech.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  height: auto !important;
+  min-height: 100%;
+}
