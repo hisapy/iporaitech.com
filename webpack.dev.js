@@ -4,9 +4,10 @@ const baseConfig = require("./webpack.baseConfig.js");
 
 module.exports = merge(baseConfig, {
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: "cheap-eval-source-map",
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    host: "0.0.0.0"
   },
   module: {
     rules: [

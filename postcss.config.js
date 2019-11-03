@@ -4,8 +4,9 @@ module.exports = ({ env }) => ({
     require("postcss-preset-env"),
     require("tailwindcss"),
     require("autoprefixer"),
-    require("cssnano")({ preset: "default" })
-    // env === "production" ? require("cssnano")({ preset: "default" })() : false
-    // env === "production" ? require("cssnano")({ preset: "default" })() : false
+    env === "production"
+      ? require("@fullhuman/postcss-purgecss")({ content: ["./**/*.html"] })
+      : false,
+    env === "production" ? require("cssnano")({ preset: "default" }) : false
   ]
 });
