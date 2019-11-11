@@ -19,11 +19,10 @@ body,
   height: 100%;
   background: linear-gradient(164deg, #ddf0ff, #4ab0fa, #2ca6b6, #a6daff);
   background-size: 300% 400%;
-  animation: ChangeBgGradient 30s cubic-bezier(0.42, 0, 0.58, 1) 1s infinite;
-  /* animation: ChangeBgGradient 10s ease-in-out infinite running; */
+  animation: changeBgGradient 30s cubic-bezier(0.42, 0, 0.58, 1) 1s infinite;
 }
 
-@keyframes ChangeBgGradient {
+@keyframes changeBgGradient {
   0% {
     background-position: 0% 0%;
   }
@@ -40,14 +39,59 @@ body,
   margin: 0 auto;
 }
 
-.textbox {
+.subheading {
   background-color: #0f2c3e;
-  @apply flex justify-center;
+  @apply flex w-full justify-end self-center;
+  @apply font-sans text-base text-white text-center;
+}
+.subheading {
+  position: relative;
+}
+.subheading .tech-adj:nth-child(-n + 4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.subheading :nth-child(-n + 3) {
+  opacity: 0;
+}
+.subheading .tech-adj {
+  animation: changeTechAdjective 20s cubic-bezier(1, -0.2, 1, -0.2) infinite;
+}
+.subheading .tech-adj:nth-child(4) {
+  animation-delay: 0s;
+}
+.subheading .tech-adj:nth-child(3) {
+  animation-delay: 5s;
+}
+.subheading .tech-adj:nth-child(2) {
+  animation-delay: 10s;
+}
+.subheading .tech-adj:nth-child(1) {
+  animation-delay: 15s;
 }
 
+@keyframes changeTechAdjective {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Favourite and most used tech */
 .tech-logo {
   @apply max-w-full;
-  /* max-width: 80%; */
   margin: 0 auto;
 }
 
