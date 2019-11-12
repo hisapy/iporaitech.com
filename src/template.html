@@ -25,7 +25,11 @@
 		<%= require(`./partials/subheading-${PAGE_LANG}.html`) %>
 	</section>
 	<main role="main">
-		<h1 class="p-6 text-3xl">Computer Science and engineering to power up your ideas</h1>
+		<div class="w-full px-6 pt-5 text-sm text-right font-medium">
+			<a class="text-blue-500 hover:text-blue-800"
+				href="<%= isEs ? '/en' : '/' %>"><%=isEs ? 'view in English' : 'ver en Español' %></a>
+		</div>
+		<h1 class="p-6 pt-2 text-3xl">Computer Science and engineering to power up your ideas</h1>
 
 		<p class="bg-teal-100 px-3 text-sm text-justify font-serif italic">
 			<strong>Iporaite</strong>&nbsp;is a Guaran&iacute; word used to describe when something looks and/or works
