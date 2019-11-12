@@ -41,33 +41,44 @@ body,
 
 .subheading {
   background-color: #0f2c3e;
-  @apply flex w-full justify-end self-center;
+  @apply flex w-full self-center relative;
   @apply font-sans text-base text-white text-center;
 }
-.subheading {
-  position: relative;
-}
-.subheading .tech-adj:nth-child(-n + 4) {
+
+/* For en language the adjective comes before Technology
+   and for es comes after Tecnología */
+.en.subheading .tech-adj:nth-child(-n + 4),
+.es.subheading .tech-adj:nth-last-child(-n + 4) {
   position: absolute;
+}
+.en.subheading .tech-adj:nth-child(-n + 4) {
   top: 0;
   left: 0;
 }
-.subheading :nth-child(-n + 3) {
+.es.subheading .tech-adj:nth-last-child(-n + 4) {
+  left: 50%;
+}
+.en.subheading .tech-adj:nth-child(-n + 3),
+.es.subheading .tech-adj:nth-last-child(-n + 3) {
   opacity: 0;
 }
 .subheading .tech-adj {
   animation: changeTechAdjective 8s cubic-bezier(1, -0.2, 1, -0.2) infinite;
 }
-.subheading .tech-adj:nth-child(4) {
+.en.subheading .tech-adj:nth-child(4),
+.es.subheading .tech-adj:nth-last-child(4) {
   animation-delay: 0s;
 }
-.subheading .tech-adj:nth-child(3) {
+.en.subheading .tech-adj:nth-child(3),
+.es.subheading .tech-adj:nth-last-child(3) {
   animation-delay: 2s;
 }
-.subheading .tech-adj:nth-child(2) {
+.en.subheading .tech-adj:nth-child(2),
+.es.subheading .tech-adj:nth-last-child(2) {
   animation-delay: 4s;
 }
-.subheading .tech-adj:nth-child(1) {
+.en.subheading .tech-adj:nth-child(1),
+.es.subheading .tech-adj:nth-last-child(1) {
   animation-delay: 6s;
 }
 

@@ -22,12 +22,7 @@
 				<img src="/<%= require('./images/logo-iporaitech.svg') %>" alt="Iporaitech" />
 			</h1>
 		</div>
-		<h2 class="subheading">
-			<span class="w-1/2 px-2 text-right tech-adj">Empowering</span>
-			<span class="w-1/2 px-2 text-right tech-adj">Innovative</span>
-			<span class="w-1/2 px-2 text-right tech-adj">Useful</span>
-			<span class="w-1/2 px-2 text-right tech-adj">Beautiful</span>
-			<span class="w-1/2 px-2 text-left">Technology</span></h2>
+		<%= require(`./partials/subheading-${PAGE_LANG}.html`) %>
 	</section>
 	<main role="main">
 		<h1 class="p-6 text-3xl">Computer Science and engineering to power up your ideas</h1>
