@@ -56,19 +56,19 @@ body,
   opacity: 0;
 }
 .subheading .tech-adj {
-  animation: changeTechAdjective 20s cubic-bezier(1, -0.2, 1, -0.2) infinite;
+  animation: changeTechAdjective 8s cubic-bezier(1, -0.2, 1, -0.2) infinite;
 }
 .subheading .tech-adj:nth-child(4) {
   animation-delay: 0s;
 }
 .subheading .tech-adj:nth-child(3) {
-  animation-delay: 5s;
+  animation-delay: 2s;
 }
 .subheading .tech-adj:nth-child(2) {
-  animation-delay: 10s;
+  animation-delay: 4s;
 }
 .subheading .tech-adj:nth-child(1) {
-  animation-delay: 15s;
+  animation-delay: 6s;
 }
 
 @keyframes changeTechAdjective {
