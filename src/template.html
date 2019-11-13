@@ -31,16 +31,16 @@
 			<a class="text-blue-500 text-xs hover:text-blue-800"
 				href="<%= isEs ? '/en' : '/' %>"><%=isEs ? 'view in English' : 'ver en Español' %></a>
 		</div>
-		<h1 class="p-6 pt-2 text-3xl">
+		<h1 class="p-6 pt-2 sm:p-10 sm:text-center text-3xl">
 			<%= require(`./partials/heading-${PAGE_LANG}.html`) %>
 		</h1>
 
-		<p class="bg-teal-100 px-3 text-sm text-justify font-serif italic">
+		<p class="bg-teal-100 px-3 sm:px-6 text-sm text-justify sm:text-center font-serif italic">
 			<strong>Iporaite</strong>
 			<%= require(`./partials/etimology-${PAGE_LANG}.html`) %>
 		</p>
 
-		<div class="p-6">
+		<div class="p-6 sm:p-10">
 			<h3 class="font-bold text-lg inline">
 				<%= require(`./partials/weProvide-${PAGE_LANG}.html`) %>
 			</h3>
@@ -58,42 +58,42 @@
 			</div>
 		</div>
 
-		<div class="px-6 py-2">
+		<div class="px-6 py-2 sm:px-10">
 			<h2 class="text-2xl font-bold"><%= require(`./partials/favTech-${PAGE_LANG}.html`) %></h2>
 
-			<div class="px-2 mt-4">
+			<div class="px-2 mt-4 sm:px-8">
 				<div class="flex flex-wrap -mx-1">
-					<div class="w-1/2 px-1 py-2">
+					<div class="w-1/2 p-2 sm:p-8">
 						<a href="https://elixir-lang.org/">
 							<img class="tech-logo" src="/<%= require('./images/elixir-logo.png') %>" alt="Elixir logo" />
 						</a>
 					</div>
-					<div class="w-1/2 px-1 py-2">
+					<div class="w-1/2 p-2 sm:p-8">
 						<a href="https://phoenixframework.org/">
 							<img class="tech-logo" src="/<%= require('./images/phoenix-logo.png') %>" alt="Phoenix Framework logo" />
 						</a>
 					</div>
-					<div class="w-1/2 px-1 py-2">
+					<div class="w-1/2 p-2 sm:p-8">
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
 							<img class="tech-logo js" src="/<%= require('./images/javascript-logo.png') %>" alt="JavaScript logo" />
 						</a>
 					</div>
-					<div class="w-1/2 px-1 py-2 flex">
+					<div class="w-1/2 p-2 sm:p-8 flex">
 						<a class="self-center" href="https://reactjs.org/">
 							<img class="tech-logo" src="/<%= require('./images/react-logo.png') %>" alt="React logo" />
 						</a>
 					</div>
-					<div class="w-1/2 px-1 py-2 flex">
+					<div class="w-1/2 p-2 sm:p-8 flex">
 						<a class="self-center" href="https://graphql.org/">
 							<img class="tech-logo" src="/<%= require('./images/graphql-logo.png') %>" alt="GraphQL logo" />
 						</a>
 					</div>
-					<div class="w-1/2 px-1 py-2 flex">
+					<div class="w-1/2 p-2 sm:p-8 flex">
 						<a class="self-center" href="https://relay.dev/">
 							<img class="tech-logo" src="/<%= require('./images/relay-logo.png') %>" alt="Relay logo" />
 						</a>
 					</div>
-					<div class="w-1/2 px-1 py-2 flex ml-auto mr-auto">
+					<div class="w-1/2 p-2 sm:p-8 flex ml-auto mr-auto">
 						<a class="self-center" href="https://kubernetes.io/">
 							<img class="tech-logo" src="/<%= require('./images/k8s-logo.png') %>" alt="Kubernetes logo" />
 						</a>
@@ -102,7 +102,7 @@
 			</div>
 		</div>
 
-		<div class="px-6 pt-6 pb-2">
+		<div class="px-6 pt-6 pb-2 sm:px-10">
 			<h2 class="text-2xl font-bold mb-4"><%= isEs ? 'Nuestro blog' : 'Our blog' %></h2>
 			<div id="medium-widget"></div>
 			<script src="https://medium-widget.pixelpoint.io/widget.js"></script>
@@ -128,7 +128,7 @@
 
 		</div>
 
-		<div class="px-6 pt-10 pb-4">
+		<div class="px-6 pt-10 pb-4 sm:px-10">
 			<h2 class="text-2xl font-bold mb-4"><%= isEs ? 'Contactanos' : 'Contact us' %></h2>
 			<p class="text-base">
 				<%= require(`./partials/emailUs-${PAGE_LANG}.html`) %>
@@ -146,7 +146,7 @@
 			</p>
 
 			<p class="py-2 text-center">
-				<img id="busy-gif" class="ml-auto mr-auto w-3/4" alt="A little bit busy gif" />
+				<img id="busy-gif" class="ml-auto mr-auto w-3/4 sm:w-3/5" alt="A little bit busy gif" />
 			</p>
 
 		</div>
