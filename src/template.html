@@ -64,25 +64,39 @@
 			<div class="px-2 mt-4">
 				<div class="flex flex-wrap -mx-1">
 					<div class="w-1/2 px-1 py-2">
-						<img class="tech-logo" src="/<%= require('./images/elixir-logo.png') %>" alt="Elixir logo" />
+						<a href="https://elixir-lang.org/">
+							<img class="tech-logo" src="/<%= require('./images/elixir-logo.png') %>" alt="Elixir logo" />
+						</a>
 					</div>
 					<div class="w-1/2 px-1 py-2">
-						<img class="tech-logo" src="/<%= require('./images/phoenix-logo.png') %>" alt="Phoenix Framework logo" />
+						<a href="https://phoenixframework.org/">
+							<img class="tech-logo" src="/<%= require('./images/phoenix-logo.png') %>" alt="Phoenix Framework logo" />
+						</a>
 					</div>
 					<div class="w-1/2 px-1 py-2">
-						<img class="tech-logo js" src="/<%= require('./images/javascript-logo.png') %>" alt="JavaScript logo" />
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
+							<img class="tech-logo js" src="/<%= require('./images/javascript-logo.png') %>" alt="JavaScript logo" />
+						</a>
 					</div>
 					<div class="w-1/2 px-1 py-2 flex">
-						<img class="tech-logo self-center" src="/<%= require('./images/react-logo.png') %>" alt="React logo" />
+						<a class="self-center" href="https://reactjs.org/">
+							<img class="tech-logo" src="/<%= require('./images/react-logo.png') %>" alt="React logo" />
+						</a>
 					</div>
 					<div class="w-1/2 px-1 py-2 flex">
-						<img class="tech-logo self-center" src="/<%= require('./images/graphql-logo.png') %>" alt="GraphQL logo" />
+						<a class="self-center" href="https://graphql.org/">
+							<img class="tech-logo" src="/<%= require('./images/graphql-logo.png') %>" alt="GraphQL logo" />
+						</a>
 					</div>
 					<div class="w-1/2 px-1 py-2 flex">
-						<img class="tech-logo self-center" src="/<%= require('./images/relay-logo.png') %>" alt="Relay logo" />
+						<a class="self-center" href="https://relay.dev/">
+							<img class="tech-logo" src="/<%= require('./images/relay-logo.png') %>" alt="Relay logo" />
+						</a>
 					</div>
 					<div class="w-1/2 px-1 py-2 flex ml-auto mr-auto">
-						<img class="tech-logo self-center" src="/<%= require('./images/k8s-logo.png') %>" alt="Kubernetes logo" />
+						<a class="self-center" href="https://kubernetes.io/">
+							<img class="tech-logo" src="/<%= require('./images/k8s-logo.png') %>" alt="Kubernetes logo" />
+						</a>
 					</div>
 				</div>
 			</div>
@@ -107,7 +121,9 @@
 			</script>
 			<h3 class="text-center text-lg">
 				<a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border
-					border-blue-500 hover:border-transparent rounded" href="https://medium.com/iporaitech">View all</a>
+					border-blue-500 hover:border-transparent rounded" href="https://medium.com/iporaitech" title="Iporaitech's Blog">
+					<%= isEs ? "Ver todo" : "View all" %>
+				</a>
 			</h3>
 
 		</div>
