@@ -17,7 +17,7 @@
 
 <body>
 	<section role="heading" class="flex flex-wrap">
-		<div class="w-full lg:w-3/4">
+		<div class="w-full">
 			<h1 class="logo">
 				<img src="/<%= require('./images/logo-iporaitech.svg') %>" alt="Iporaitech" />
 			</h1>
@@ -26,21 +26,23 @@
 			<%= require(`./partials/subheading-${PAGE_LANG}.html`) %>
 		</div>
 	</section>
-	<main role="main">
+	<main role="main" class="lg:px-24 xl:px-40">
 		<div class="w-full px-6 pt-5 text-right font-medium">
 			<a class="text-blue-500 text-xs hover:text-blue-800"
 				href="<%= isEs ? '/en' : '/' %>"><%=isEs ? 'view in English' : 'ver en Español' %></a>
 		</div>
-		<h1 class="p-6 pt-2 sm:p-10 sm:text-center text-3xl">
+		<h2 class="p-6 pt-2 text-3xl sm:p-10 sm:text-center">
 			<%= require(`./partials/heading-${PAGE_LANG}.html`) %>
-		</h1>
+		</h2>
 
-		<p class="bg-teal-100 px-3 sm:px-6 text-sm text-justify sm:text-center font-serif italic">
-			<strong>Iporaite</strong>
-			<%= require(`./partials/etimology-${PAGE_LANG}.html`) %>
-		</p>
+		<div class="px-6 sm:px-10 md:text-center md:px-16 lg:px-32">
+			<span class="bg-teal-100 font-serif italic text-sm sm:px-0">
+				<strong>Iporaite</strong>
+				<%= require(`./partials/etimology-${PAGE_LANG}.html`) %>
+			</span>
+		</div>
 
-		<div class="p-6 sm:p-10">
+		<div class="p-6 sm:p-10 md:px-16 lg:px-32 lg:py-12">
 			<h3 class="font-bold text-lg inline">
 				<%= require(`./partials/weProvide-${PAGE_LANG}.html`) %>
 			</h3>
@@ -48,7 +50,7 @@
 				<%= require(`./partials/purpose-${PAGE_LANG}.html`) %>
 			</p>
 
-			<div class="pt-6">
+			<div class="pt-6 lg:pt-12">
 				<h3 class="font-bold text-lg inline">
 					<%= require(`./partials/yearsOfExp-${PAGE_LANG}.html`) %>
 				</h3>
@@ -58,51 +60,49 @@
 			</div>
 		</div>
 
-		<div class="px-6 py-2 sm:px-10">
+		<div class="px-6 py-2 sm:px-10 md:px-16 lg:px-32">
 			<h2 class="text-2xl font-bold"><%= require(`./partials/favTech-${PAGE_LANG}.html`) %></h2>
 
-			<div class="px-2 mt-4 sm:px-8">
-				<div class="flex flex-wrap -mx-1">
-					<div class="w-1/2 p-2 sm:p-8">
-						<a href="https://elixir-lang.org/">
-							<img class="tech-logo" src="/<%= require('./images/elixir-logo.png') %>" alt="Elixir logo" />
-						</a>
-					</div>
-					<div class="w-1/2 p-2 sm:p-8">
-						<a href="https://phoenixframework.org/">
-							<img class="tech-logo" src="/<%= require('./images/phoenix-logo.png') %>" alt="Phoenix Framework logo" />
-						</a>
-					</div>
-					<div class="w-1/2 p-2 sm:p-8">
-						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
-							<img class="tech-logo js" src="/<%= require('./images/javascript-logo.png') %>" alt="JavaScript logo" />
-						</a>
-					</div>
-					<div class="w-1/2 p-2 sm:p-8 flex">
-						<a class="self-center" href="https://reactjs.org/">
-							<img class="tech-logo" src="/<%= require('./images/react-logo.png') %>" alt="React logo" />
-						</a>
-					</div>
-					<div class="w-1/2 p-2 sm:p-8 flex">
-						<a class="self-center" href="https://graphql.org/">
-							<img class="tech-logo" src="/<%= require('./images/graphql-logo.png') %>" alt="GraphQL logo" />
-						</a>
-					</div>
-					<div class="w-1/2 p-2 sm:p-8 flex">
-						<a class="self-center" href="https://relay.dev/">
-							<img class="tech-logo" src="/<%= require('./images/relay-logo.png') %>" alt="Relay logo" />
-						</a>
-					</div>
-					<div class="w-1/2 p-2 sm:p-8 flex ml-auto mr-auto">
-						<a class="self-center" href="https://kubernetes.io/">
-							<img class="tech-logo" src="/<%= require('./images/k8s-logo.png') %>" alt="Kubernetes logo" />
-						</a>
-					</div>
+			<div class="flex flex-wrap -mx-1 mt-4 px-2 sm:px-8">
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3">
+					<a href="https://elixir-lang.org/">
+						<img class="tech-logo" src="/<%= require('./images/elixir-logo.png') %>" alt="Elixir logo" />
+					</a>
+				</div>
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3">
+					<a href="https://phoenixframework.org/">
+						<img class="tech-logo" src="/<%= require('./images/phoenix-logo.png') %>" alt="Phoenix Framework logo" />
+					</a>
+				</div>
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3">
+					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
+						<img class="tech-logo js" src="/<%= require('./images/javascript-logo.png') %>" alt="JavaScript logo" />
+					</a>
+				</div>
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3 flex">
+					<a class="self-center" href="https://reactjs.org/">
+						<img class="tech-logo" src="/<%= require('./images/react-logo.png') %>" alt="React logo" />
+					</a>
+				</div>
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3 flex">
+					<a class="self-center" href="https://graphql.org/">
+						<img class="tech-logo" src="/<%= require('./images/graphql-logo.png') %>" alt="GraphQL logo" />
+					</a>
+				</div>
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3 flex">
+					<a class="self-center" href="https://relay.dev/">
+						<img class="tech-logo" src="/<%= require('./images/relay-logo.png') %>" alt="Relay logo" />
+					</a>
+				</div>
+				<div class="w-1/2 p-2 sm:p-8 md:w-1/3 flex ml-auto mr-auto">
+					<a class="self-center" href="https://kubernetes.io/">
+						<img class="tech-logo k8s" src="/<%= require('./images/k8s-logo.png') %>" alt="Kubernetes logo" />
+					</a>
 				</div>
 			</div>
 		</div>
 
-		<div class="px-6 pt-6 pb-2 sm:px-10">
+		<div class="px-6 pt-6 pb-2 sm:px-10 md:px-16 lg:px-32">
 			<h2 class="text-2xl font-bold mb-4"><%= isEs ? 'Nuestro blog' : 'Our blog' %></h2>
 			<div id="medium-widget"></div>
 			<script src="https://medium-widget.pixelpoint.io/widget.js"></script>
@@ -128,7 +128,7 @@
 
 		</div>
 
-		<div class="px-6 pt-10 pb-4 sm:px-10">
+		<div class="px-6 pt-10 pb-4 sm:px-10 md:px-16 lg:px-32">
 			<h2 class="text-2xl font-bold mb-4"><%= isEs ? 'Contactanos' : 'Contact us' %></h2>
 			<p class="text-base">
 				<%= require(`./partials/emailUs-${PAGE_LANG}.html`) %>
@@ -146,7 +146,7 @@
 			</p>
 
 			<p class="py-2 text-center">
-				<img id="busy-gif" class="ml-auto mr-auto w-3/4 sm:w-3/5" alt="A little bit busy gif" />
+				<img id="busy-gif" class="ml-auto mr-auto w-3/4 sm:w-3/5 md:w-1/2" alt="A little bit busy gif" />
 			</p>
 
 		</div>

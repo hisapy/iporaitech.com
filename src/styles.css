@@ -1,18 +1,18 @@
-/* This is like the index for css. */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/****************/
+/* Mobile first */
+/****************/
 
 html,
 body,
 #main {
   height: 100%;
-  /* background-color: #ddf0ff; */
   background-color: #fff;
 }
 
-/* Contains animation keyframes for logo's background */
 .logo {
   padding: 20px;
   margin: 0;
@@ -38,13 +38,6 @@ body,
   max-width: 80%;
   margin: 0 auto;
 }
-
-@media (min-width: 480px) {
-  .logo img {
-    max-width: 60%;
-  }
-}
-
 .subheading {
   background-color: #0f2c3e;
   @apply flex w-full self-center relative;
@@ -76,19 +69,19 @@ body,
 }
 .en.subheading .tech-adj:nth-child(4),
 .es.subheading .tech-adj:nth-last-child(4) {
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 .en.subheading .tech-adj:nth-child(3),
 .es.subheading .tech-adj:nth-last-child(3) {
-  animation-delay: 4s;
+  animation-delay: 3s;
 }
 .en.subheading .tech-adj:nth-child(2),
 .es.subheading .tech-adj:nth-last-child(2) {
-  animation-delay: 6s;
+  animation-delay: 5s;
 }
 .en.subheading .tech-adj:nth-child(1),
 .es.subheading .tech-adj:nth-last-child(1) {
-  animation-delay: 8s;
+  animation-delay: 7s;
 }
 
 @keyframes changeTechAdjective {
@@ -114,9 +107,11 @@ body,
   @apply max-w-full border-0;
   margin: 0 auto;
 }
-
 .tech-logo.js {
   max-width: 45%;
+}
+.tech-logo.k8s {
+  max-width: 94%;
 }
 
 /* contact us */
@@ -139,11 +134,6 @@ body,
 .bottom-line {
   @apply w-full px-4 mt-12 p-2 flex items-center justify-end border-t;
 }
-@screen sm {
-  .bottom-line {
-    @apply px-6;
-  }
-}
 
 .bottom-line span {
   font-size: 0.6em;
@@ -159,4 +149,41 @@ body,
 
 .heroicon-ui-mail {
   fill: #fff;
+}
+
+/**********************/
+/* Other screen sizes */
+/**********************/
+
+@media (min-width: 480px) {
+  .logo img {
+    max-width: 60%;
+  }
+}
+
+@screen sm {
+  .bottom-line {
+    @apply px-6;
+  }
+}
+
+@screen md {
+  .logo img {
+    @apply w-1/2;
+  }
+  .medium-widget-article__image img {
+    margin-left: auto;
+  }
+}
+
+@screen lg {
+  .logo img {
+    @apply w-2/5;
+  }
+}
+
+@screen xl {
+  .logo img {
+    @apply w-1/3;
+  }
 }
