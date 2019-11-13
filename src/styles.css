@@ -44,6 +44,9 @@ body,
   @apply flex w-full self-center relative;
   @apply font-sans text-base text-white text-center;
 }
+.en.subheading {
+  @apply justify-end;
+}
 
 /* For en language the adjective comes before Technology
    and for es comes after Tecnología */
@@ -129,6 +132,10 @@ body,
 /* copyright at the bottom */
 .bottom-line {
   @apply w-full px-4 mt-12 p-2 flex items-center justify-end border-t;
+}
+
+.bottom-line span {
+  font-size: 0.6em;
 }
 
 .bottom-line img {
