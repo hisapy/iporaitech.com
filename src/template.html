@@ -1,11 +1,25 @@
-<!DOCTYPE html>
 <%
 	const PAGE_LANG = htmlWebpackPlugin.options.language;
 	const isEs = PAGE_LANG.startsWith("es");
 %>
+
+<!DOCTYPE html>
 <html lang="<%= PAGE_LANG %>" class="text-gray-900 antialiased leading-tight">
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73422491-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-73422491-5');
+	</script>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
