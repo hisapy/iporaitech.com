@@ -1,12 +1,19 @@
-module.exports = ({ env }) => ({
-  plugins: [
-    require("postcss-import"),
-    require("postcss-preset-env"),
-    require("tailwindcss"),
-    require("autoprefixer"),
-    env === "production"
-      ? require("@fullhuman/postcss-purgecss")({ content: ["./**/*.html"] })
-      : false,
-    env === "production" ? require("cssnano")({ preset: "default" }) : false
-  ]
+const purgecss = require("@fullhuman/postcss-purgecss")({
+  content: ["./**/*.html"],
+  defaultExtractor: content => content.match(/[\w-/:]*[\w-/:]/g) || []
 });
+
+module.exports = ctx => {
+  return {
+    plugins: [
+      require("postcss-import"),
+      require("postcss-preset-env"),
+      require("tailwindcss"),
+      require("autoprefixer"),
+      ...(ctx.webpack.mode === "production" ? [purgecss] : []),
+      ...(ctx.webpack.mode === "production"
+        ? [require("cssnano")({ preset: "default" })]
+        : [])
+    ]
+  };
+};
