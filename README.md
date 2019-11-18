@@ -12,8 +12,8 @@ Build for production with `yarn build:prod`
 
 ## Deploy
 
-1. In the generated index.html, add "/" before favicon.ico and possibly other icons. This is needed because we have 2 index.html and the webpack plugin doesn't add "/" when generating the prod build.
-2. Copy files to iporaitech.com bucket in S3 (previously deleting all files)
+1. Delete all files from www.iporaitech.com S3 bucket
+2. `yarn build:prod` and copy newly generated production files from **dist** to the S3 bucket
 3. Invalidate cache in CloudFront using
    ```
    /\*
