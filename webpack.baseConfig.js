@@ -17,12 +17,12 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "template.html",
-      language: "es"
+      language: "en"
     }),
     new HtmlWebpackPlugin({
       template: "template.html",
-      filename: "en/index.html",
-      language: "en"
+      filename: "es/index.html",
+      language: "es"
     }),
     new FaviconsWebpackPlugin({
       logo: "./images/favicon.png",
