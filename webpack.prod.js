@@ -15,7 +15,14 @@ module.exports = merge(baseConfig, {
         parallel: true,
         sourceMap: true // set to true if you want JS source maps
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false, // set to false if you want CSS source maps,
+            annotation: true
+          }
+        }
+      })
     ]
   },
   plugins: [
@@ -36,10 +43,16 @@ module.exports = merge(baseConfig, {
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1
+              importLoaders: 1,
+              sourceMap: true
             }
           },
-          "postcss-loader"
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       }
     ]
