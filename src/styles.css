@@ -124,13 +124,13 @@ body,
 
 /* Medium widget */
 .medium-widget-article__image {
-  flex: 1;
-  margin: 4px;
+  flex: 1 !important;
+  margin: 4px !important;
 }
 
 .medium-widget-article__content {
-  flex: 2;
-  margin: 4px;
+  flex: 2 !important;
+  margin: 4px !important;
 }
 
 /* copyright at the bottom */
@@ -175,7 +175,7 @@ body,
     @apply w-1/2;
   }
   .medium-widget-article__image img {
-    margin-left: auto;
+    margin-left: auto !important;
   }
 }
 

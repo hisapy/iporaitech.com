@@ -1,6 +1,10 @@
 const purgecss = require("@fullhuman/postcss-purgecss")({
   content: ["./**/*.html"],
-  defaultExtractor: content => content.match(/[\w-/:]*[\w-/:]/g) || []
+  defaultExtractor: content => content.match(/[\w-/:]*[\w-/:]/g) || [],
+  // Whitelist .medium-widget styles because the corresponding
+  // markup is added dynamically by the widget's JavaScript
+  whitelistPatterns: [/^medium\-widget/],
+  whitelistPatternsChildren: [/^medium\-widget/]
 });
 
 module.exports = ctx => {
