@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Iporaitech's website",
   "main": "index.js",
-  "repository": "git@gitlab.com:iporaitech/iporaitech.git",
   "author": "hisa <hisa@iporaitech.com>",
   "license": "MIT",
   "private": true,
