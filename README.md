@@ -6,6 +6,8 @@ It's built with Webpack and styled with TailwindCSS. See webpack.\* files for bu
 
 ## Scripts
 
+Install dependencies with `yarn install`
+
 Start development server with `yarn dev [--watch]`
 
 Build for production with `yarn build:prod`
