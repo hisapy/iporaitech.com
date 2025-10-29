@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    hot: true,
+    watchFiles: ["src/**/*.html", "src/**/*.js", "src/**/*.css"],
     host: "0.0.0.0",
   },
   module: {
