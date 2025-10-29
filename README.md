@@ -8,7 +8,7 @@ It's built with Webpack and styled with TailwindCSS. See webpack.\* files for bu
 
 Install dependencies with `yarn install`
 
-Start development server with `yarn dev [--watch]`
+Start development server with `yarn dev`
 
 Build for production with `yarn build:prod`
 
