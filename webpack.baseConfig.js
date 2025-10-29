@@ -10,25 +10,27 @@ module.exports = {
   entry: "./index.js",
   output: {
     filename: "main-[contenthash].js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "./dist"),
   },
   plugins: [
-    new webpack.IgnorePlugin(/(\.flow|\.ts)$/),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /(\.flow|\.ts)$/,
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "template.html",
-      language: "en"
+      language: "en",
     }),
     new HtmlWebpackPlugin({
       template: "template.html",
       filename: "es/index.html",
-      language: "es"
+      language: "es",
     }),
     new FaviconsWebpackPlugin({
       logo: "./images/favicon.png",
       background: "#fff",
-      prefix: "icons/"
-    })
+      prefix: "icons/",
+    }),
   ],
   module: {
     rules: [
@@ -36,13 +38,20 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.html$/,
         exclude: path.resolve(__dirname, "src", "template.html"),
-        use: ["html-loader"]
+        use: [
+          {
+            loader: "html-loader",
+            options: {
+              esModule: false,
+            },
+          },
+        ],
       },
       {
         // file-loader for images
@@ -52,11 +61,12 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "./images/"
-            }
-          }
-        ]
-      }
-    ]
-  }
+              outputPath: "./images/",
+              esModule: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

@@ -1,13 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const merge = require("webpack-merge");
+const path = require("path");
+const { merge } = require("webpack-merge");
 const baseConfig = require("./webpack.baseConfig.js");
 
 module.exports = merge(baseConfig, {
   mode: "development",
-  devtool: "cheap-eval-source-map",
+  devtool: "eval-cheap-source-map",
   devServer: {
-    contentBase: "./dist",
-    host: "0.0.0.0"
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    hot: true,
+    host: "0.0.0.0",
   },
   module: {
     rules: [
@@ -18,12 +22,12 @@ module.exports = merge(baseConfig, {
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
-          "postcss-loader"
-        ]
-      }
-    ]
-  }
+          "postcss-loader",
+        ],
+      },
+    ],
+  },
 });
