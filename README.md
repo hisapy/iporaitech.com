@@ -1,8 +1,10 @@
 # Iporaitech's web site
 
-This is the static website for iporaitech.com.
+This is the static website for iporaitech.com
 
-It's built with Webpack and styled with TailwindCSS. See webpack.\* files for bundling info.
+It's built with Webpack and styled with TailwindCSS.
+
+See webpack.\* files for bundling info.
 
 ## Scripts
 
@@ -12,12 +14,20 @@ Start development server with `yarn dev`
 
 Build for production with `yarn build:prod`
 
-## Deploy
+## Deployment
 
-1. Delete all files from www.iporaitech.com S3 bucket
-2. `yarn build:prod` and copy newly generated production files from **dist** to the S3 bucket
-3. Invalidate cache in CloudFront using
-   ```
-   /\*
-   /en/\*
-   ```
+The deploy process is encoded in the [deploy-all](.github/workflows/deploy-all.yml) GitHub Actions workflow, basically:
+
+- Deploy the AWS infra with Terraform
+- Build for production and upload the output to its S3 bucket
+- Invalidate CloudFront cache
+
+## AWS Infrastructure
+
+This is and static website hosted in a private S3 bucket and distributed by CloudFront.
+
+For info about the exact resources check the [terraform](./terraform/) directory.
+
+**NOTICE:** The Route53 hosted zone for the `iporaitech.com` domain name is created in this project.
+
+**TODO:** add terraform-docs

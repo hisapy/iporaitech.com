@@ -1,0 +1,80 @@
+name: Deploy All
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TF_VAR_aws_region: us-east-1
+  TF_VAR_project: iporaitech
+  TF_VAR_env: prod # Only prod for the moment
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      TF_IN_AUTOMATION: true
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v5.0.0
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: ${{ env.TF_VAR_aws_region }}
+
+      - name: Parse .tool-versions
+        uses: ./.github/actions/parse-tool-versions
+        id: tool-versions
+
+      - name: Show versions
+        run: echo ${{ steps.tool-versions.outputs.versions }}
+
+      # Infra setup steps
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ fromJSON(steps.tool-versions.outputs.versions).terraform }}
+      - name: Terraform init
+        run: |
+          terraform init -input=false \
+            -backend-config="bucket=${{env.TF_VAR_project}}-tfbackend" \
+            -backend-config="region=${{env.TF_VAR_aws_region}}"
+        working-directory: ./terraform
+
+      - run: terraform plan -out=tfplan -input=false
+        working-directory: ./terraform
+      - run: terraform apply -input=false tfplan
+        working-directory: ./terraform
+      - run: echo "json=$(terraform output -json | jq -c .)" >> $GITHUB_OUTPUT
+        working-directory: ./terraform
+        id: tf_output
+
+      # Website build steps
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ fromJSON(steps.tool-versions.outputs.versions).nodejs }}
+          cache: 'yarn'
+      - run: node -v
+      - run: yarn set version ${{ fromJSON(steps.tool-versions.outputs.versions).yarn }}
+      - run: yarn install --inmutable
+      - run: yarn build:prod
+
+      # Deploy steps
+      - name: Sync to S3
+        env:
+          S3_BUCKET_NAME: ${{ fromJson(steps.tf_output.outputs.json).s3_bucket_name.value }}
+        run: aws s3 sync ./dist s3://${{env.S3_BUCKET_NAME}}/ --delete
+
+      - name: Invalidate CloudFront
+        env:
+          CLOUDFRONT_DIST_ID: ${{ fromJson(steps.tf_output.outputs.json).cloudfront_dist_id.value }}
+        run: |
+          aws cloudfront create-invalidation \
+          --distribution-id ${{env.CLOUDFRONT_DIST_ID}} \
+          --paths "/*" "/en/*"

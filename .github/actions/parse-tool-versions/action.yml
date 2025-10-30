@@ -1,0 +1,17 @@
+name: 'Parse .tool-versions'
+description: 'Reads .tool-versions and exposes each tool version as an output'
+outputs:
+  versions:
+    description: JSON with tools as keys and versions as values
+    value: ${{ steps.parse.outputs.json }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: parse
+      shell: bash
+      run: |
+        # Build JSON object from .tool-versions, ignoring comments and blanks
+        json=$(grep -v '^\s*#' .tool-versions | awk '{printf "\"%s\":\"%s\",",$1,$2}' | sed 's/,$//')
+        json="{${json}}"
+        echo "json=$json" >> $GITHUB_OUTPUT
