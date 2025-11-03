@@ -170,13 +170,13 @@ body,
   }
 }
 
-@screen sm {
+@variant sm {
   .bottom-line {
     @apply px-6;
   }
 }
 
-@screen md {
+@variant md {
   .logo img {
     @apply w-1/2;
   }
@@ -185,13 +185,13 @@ body,
   }
 }
 
-@screen lg {
+@variantlg {
   .logo img {
     @apply w-2/5;
   }
 }
 
-@screen xl {
+@variant xl {
   .logo img {
     @apply w-1/3;
   }
