@@ -20,11 +20,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "template.html",
       language: "en",
+      minify: {
+        collapseWhitespace: false,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "template.html",
       filename: "es/index.html",
       language: "es",
+      minify: {
+        collapseWhitespace: false,
+      },
     }),
     new FaviconsWebpackPlugin({
       logo: "./images/favicon.png",
