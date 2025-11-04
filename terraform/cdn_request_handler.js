@@ -6,7 +6,7 @@ function handler(event) {
   const rootDomain = "iporaitech.com";
 
   // 1. Redirect root domain requests to www
-  if (host.startsWith(prodDomain)) {
+  if (host.startsWith(rootDomain)) {
     return {
       statusCode: 301,
       statusDescription: "Moved Permanently",
