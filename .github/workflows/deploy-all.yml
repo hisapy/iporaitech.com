@@ -12,6 +12,8 @@ env:
   TF_VAR_aws_region: us-east-1
   TF_VAR_project: iporaitech
   TF_VAR_env: prod # Only prod for the moment
+  TF_VAR_dns_google_site_verification_txt: ${{ vars.GOOGLE_SITE_VERIFICATION_TXT }}
+  TF_VAR_dns_dkim_txt: ${{ vars.DNS_DKIM_TXT }}
 
 permissions:
   contents: read
