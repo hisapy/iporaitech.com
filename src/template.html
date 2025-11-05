@@ -25,7 +25,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Iporaitech | <%= isEs ? 'Desarrollo de Software' : 'Software Development' %></title>
-	<meta name="description" content="<%= require(`./partials/meta-description-content-${PAGE_LANG}.html`) %>">
+	<meta name="description" content="<%= require(`./partials/${PAGE_LANG}/meta-description-content.html`) %>">
 
 	<!--[if lt IE 9]>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
@@ -41,7 +41,7 @@
 			</h1>
 		</div>
 		<h2 class="subheading <%= PAGE_LANG %>">
-			<%= require(`./partials/subheading-${PAGE_LANG}.html`) %>
+			<%= require(`./partials/${PAGE_LANG}/subheading.html`) %>
 		</h2>
 	</section>
 	<main role="main" class="lg:px-24 xl:px-40">
@@ -50,36 +50,36 @@
 				href="<%= isEs ? '/' : '/es' %>"><%=isEs ? 'view in English' : 'ver en Español' %></a>
 		</div>
 		<h2 class="p-6 pt-2 text-3xl sm:p-10 sm:text-center">
-			<%= require(`./partials/heading-${PAGE_LANG}.html`) %>
+			<%= require(`./partials/${PAGE_LANG}/heading.html`) %>
 		</h2>
 
 		<div class="px-6 sm:px-10 md:text-center md:px-16 lg:px-32">
 			<span class="bg-teal-100 font-serif italic text-sm sm:px-0 lg:text-base">
 				<strong>Iporaite</strong>
-				<%= require(`./partials/etimology-${PAGE_LANG}.html`) %>
+				<%= require(`./partials/${PAGE_LANG}/etimology.html`) %>
 			</span>
 		</div>
 
 		<div class="p-6 sm:p-10 md:px-16 lg:px-32 lg:py-12">
 			<h3 class="font-bold text-lg inline">
-				<%= require(`./partials/weProvide-${PAGE_LANG}.html`) %>
+				<%= require(`./partials/${PAGE_LANG}/weProvide.html`) %>
 			</h3>
 			<p class="text-base inline">
-				<%= require(`./partials/purpose-${PAGE_LANG}.html`) %>
+				<%= require(`./partials/${PAGE_LANG}/purpose.html`) %>
 			</p>
 
 			<div class="pt-6 lg:pt-12">
 				<h3 class="font-bold text-lg inline">
-					<%= require(`./partials/yearsOfExp-${PAGE_LANG}.html`) %>
+					<%= require(`./partials/${PAGE_LANG}/yearsOfExp.html`) %>
 				</h3>
 				<p class="text-base inline">
-					<%= require(`./partials/working-${PAGE_LANG}.html`) %>
+					<%= require(`./partials/${PAGE_LANG}/working.html`) %>
 				</p>
 			</div>
 		</div>
 
 		<div class="px-6 py-2 sm:px-10 md:px-16 lg:px-32">
-			<h2 class="text-2xl font-bold"><%= require(`./partials/favTech-${PAGE_LANG}.html`) %></h2>
+			<h2 class="text-2xl font-bold"><%= require(`./partials/${PAGE_LANG}/favTech.html`) %></h2>
 
 			<div class="flex flex-wrap -mx-1 mt-4 px-2 sm:px-8">
 				<div class="w-1/2 p-2 sm:p-8 md:w-1/3">
@@ -149,7 +149,7 @@
 		<div class="px-6 pt-10 pb-4 sm:px-10 md:px-16 lg:px-32">
 			<h2 class="text-2xl font-bold mb-4"><%= isEs ? 'Contactanos' : 'Contact us' %></h2>
 			<p class="text-base">
-				<%= require(`./partials/emailUs-${PAGE_LANG}.html`) %>
+				<%= require(`./partials/${PAGE_LANG}/emailUs.html`) %>
 			</p>
 
 			<p class="py-4 text-center">
