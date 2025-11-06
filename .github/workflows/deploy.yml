@@ -1,4 +1,4 @@
-name: Deploy All
+name: Build and deploy
 
 on:
   push:
@@ -20,25 +20,44 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  build:
+    name: Bundle Website
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Parse .tool-versions
+        uses: ./.github/actions/parse-tool-versions
+        id: tool-versions
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ fromJSON(steps.tool-versions.outputs.versions).nodejs }}
+          cache: 'yarn'
+      - run: node -v
+      - run: yarn set version ${{ fromJSON(steps.tool-versions.outputs.versions).yarn }}
+      - run: yarn install --inmutable
+      - run: yarn build:prod
+      - name: Upload dist bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-artifact
+          path: dist
+
+  infra:
+    name: Terraform Infra
+    runs-on: ubuntu-latest
+    outputs:
+      tf_output: ${{ steps.tf_output.outputs.json}}
     env:
       TF_IN_AUTOMATION: true
     steps:
       - uses: actions/checkout@v5
+      - name: Parse .tool-versions
+        uses: ./.github/actions/parse-tool-versions
+        id: tool-versions
       - uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: ${{ env.TF_VAR_aws_region }}
-
-      - name: Parse .tool-versions
-        uses: ./.github/actions/parse-tool-versions
-        id: tool-versions
-
-      - name: Show versions
-        run: echo ${{ steps.tool-versions.outputs.versions }}
-
-      # Infra setup steps
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${{ fromJSON(steps.tool-versions.outputs.versions).terraform }}
@@ -48,7 +67,6 @@ jobs:
             -backend-config="bucket=${{env.TF_VAR_project}}-tfbackend" \
             -backend-config="region=${{env.TF_VAR_aws_region}}"
         working-directory: ./terraform
-
       - run: terraform plan -out=tfplan -input=false
         working-directory: ./terraform
       - run: terraform apply -input=false tfplan
@@ -57,25 +75,27 @@ jobs:
         working-directory: ./terraform
         id: tf_output
 
-      # Website build steps
-      - uses: actions/setup-node@v5
+  deploy:
+    name: Deploy Website
+    runs-on: ubuntu-latest
+    needs: [build, infra]
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
-          node-version: ${{ fromJSON(steps.tool-versions.outputs.versions).nodejs }}
-          cache: 'yarn'
-      - run: node -v
-      - run: yarn set version ${{ fromJSON(steps.tool-versions.outputs.versions).yarn }}
-      - run: yarn install --inmutable
-      - run: yarn build:prod
-
-      # Deploy steps
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: ${{ env.TF_VAR_aws_region }}
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-artifact
+          path: dist
       - name: Sync to S3
         env:
-          S3_BUCKET_NAME: ${{ fromJson(steps.tf_output.outputs.json).s3_bucket_name.value }}
+          S3_BUCKET_NAME: ${{ fromJson(needs.infra.outputs.tf_output).s3_bucket_name.value }}
         run: aws s3 sync ./dist s3://${{env.S3_BUCKET_NAME}}/ --delete
-
       - name: Invalidate CloudFront
         env:
-          CLOUDFRONT_DIST_ID: ${{ fromJson(steps.tf_output.outputs.json).cloudfront_dist_id.value }}
+          CLOUDFRONT_DIST_ID: ${{ fromJson(needs.infra.outputs.tf_output).cloudfront_dist_id.value }}
         run: |
           aws cloudfront create-invalidation \
           --distribution-id ${{env.CLOUDFRONT_DIST_ID}} \

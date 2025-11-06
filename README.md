@@ -19,7 +19,8 @@ Build for production with `yarn build:prod`
 The deploy process is encoded in the [deploy-all](.github/workflows/deploy-all.yml) GitHub Actions workflow, basically:
 
 - Deploy the AWS infra with Terraform
-- Build for production and upload the output to its S3 bucket
+- Build for production
+- Upload the build output to its S3 bucket
 - Invalidate CloudFront cache
 
 ## AWS Infrastructure
