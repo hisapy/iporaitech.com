@@ -62,6 +62,7 @@ jobs:
       - name: Parse .tool-versions
         uses: ./.github/actions/parse-tool-versions
         id: tool-versions
+
       - uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
@@ -86,10 +87,13 @@ jobs:
             -backend-config="bucket=${{env.TF_VAR_project}}-tfbackend" \
             -backend-config="region=${{env.TF_VAR_aws_region}}"
         working-directory: ./terraform
+
       - run: terraform plan -out=tfplan -input=false
         working-directory: ./terraform
+
       - run: terraform apply -input=false tfplan
         working-directory: ./terraform
+
       - run: echo "json=$(terraform output -json | jq -c .)" >> $GITHUB_OUTPUT
         working-directory: ./terraform
         id: tf_output

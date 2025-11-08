@@ -34,8 +34,23 @@ module.exports = {
     }),
     new FaviconsWebpackPlugin({
       logo: "./images/favicon.png",
-      background: "#fff",
       prefix: "icons/",
+      favicons: {
+        appName: "Iporaitech",
+        appDescription: "Static web page",
+        background: "#fff",
+        icons: {
+          // Only generate the basics
+          favicons: true, // favicon.ico + favicon.png
+          appleIcon: true,
+          android: false,
+          appleStartup: false,
+          coast: false,
+          firefox: false,
+          windows: false,
+          yandex: false,
+        },
+      },
     }),
   ],
   module: {
