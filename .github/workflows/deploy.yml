@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
       - name: Parse .tool-versions
         uses: ./.github/actions/parse-tool-versions
         id: tool-versions
@@ -35,7 +36,14 @@ jobs:
       - run: node -v
       - run: yarn set version ${{ fromJSON(steps.tool-versions.outputs.versions).yarn }}
       - run: yarn install --inmutable
-      - run: yarn build:prod
+      - uses: actions/cache@v4
+        id: cache-dist
+        with:
+          path: dist
+          key: dist-${{ hashFiles('**/yarn.lock', '**/src/**') }}
+      - name: Build production bundle
+        if: steps.cache-dist.outputs.cache-hit != 'true'
+        run: yarn build:prod
       - name: Upload dist bundle
         uses: actions/upload-artifact@v4
         with:
