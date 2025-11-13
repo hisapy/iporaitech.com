@@ -67,6 +67,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: ${{ env.TF_VAR_aws_region }}
+
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${{ fromJSON(steps.tool-versions.outputs.versions).terraform }}
