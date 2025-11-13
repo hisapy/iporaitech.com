@@ -37,13 +37,17 @@ When you create a Route53 hosted zone for your domain, you have to update the na
 
 You can use the `dig` command to verify the name servers have been propagated (at least to your location). For example, the following command should return the same NS as the ones shown in the Route53 hosted zone:
 
-`dig NS iporaitech.com +short`
+`dig NS mydomain.com +short`
 
 Operations that require Route53 DNS records will timeout if the NS records returned by the DNS query are not the same as the ones in the hosted zone, for example, the ACM certificate validation from the terraform-aws-route53-cert module.
 
 > In my experience, with US and PY based DNS registrars, ACM (us-east-1) was able to validate certificates ~1 hour or so after updating the NS in the registrar ... maybe affected by me running `dig` from my side to get the expected CNAME answer (?) 🤔.
 
 ### About the DomainKeys Identified Mail (DKIM) DNS record
+
+A single string in a TXT record has a 255-character limit, but the 2048-bit DKIM value from Gmail can be around 400 characters.
+
+The `aws_route53_record.dkim` created in this repository is an example of how to workaround this limit.
 
 ## Deployment
 
