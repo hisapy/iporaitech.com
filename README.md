@@ -58,8 +58,8 @@ Essentially, the process is:
 - Sync the build output to its S3 bucket
 - Invalidate CloudFront cache
 
-In the implementation, this is optimized by running first the infra and production build in parallel jobs, and when these job finish, a job for the sync and cache invalidation.
+In the implementation, this is optimized with caching and by running first the infra and production build in parallel jobs, and when these job finish, a job for the sync and cache invalidation.
 
 Check the [Build and deploy](.github/workflows/deploy.yml) GitHub Actions workflow for implementation details.
 
-NOTICE: the workflow expects `secrets.AWS_ROLE` to be set with the ARN of the `GithubActionsRole` created by the aws-afc-terraform-s3-backend-blueprint, or an equivalent role that can authenticate via OIDC.
+NOTICE: the workflow expects `secrets.AWS_ROLE` to be set with the ARN of the `GithubActionsRole` created by the `aws-afc-terraform-s3-backend-blueprint`, or an equivalent role that can authenticate via OIDC.
