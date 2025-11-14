@@ -2,11 +2,13 @@
 
 This is the static website for [iporaitech.com](https://iporaitech.com), styled with TailwindCSS and bundled with Webpack.
 
-> **NOTICE**: Iporaitech is currently out-of-service, but this is a _very simple_ example of how to build an static website _without a framework_, and deploy it to AWS.
+> **NOTICE**: Iporaitech is currently out-of-service, but this is a _very simple_ **example** to showcase how to build an static website _without a framework_, and deploy it to AWS.
 
 It features English/Spanish content by using the `HtmlWebpackPlugin` to generate the `index.html` and the `es/index.html` files based on a [template file](./src/template.html) and [partial content](./src/partials/) embedded in the template for each language.
 
-Caveat: this example does not include tests nor code quality checks.
+The language switcher works with a cookie (that doesn't need GDPR banner) and JavaScript.
+
+Caveat, tests nor code quality checks are included in this project.
 
 ## Scripts
 
