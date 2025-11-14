@@ -33,6 +33,10 @@ Check the [terraform](./terraform/) directory for more info.
 
 **TODO:** add terraform-docs
 
+### Requests to /es and redirecting non-www to www
+
+Those type of requests are handled by [cdn_request_handler.js](./terraform/cdn_request_handler.js) in the CloudFront distribution.
+
 ### About Route53 and DNS propagation
 
 When you create a Route53 hosted zone for your domain, you have to update the name servers (NS) on the domain's registrar with the NS records assigned to the hosted zone by Route53.
@@ -64,4 +68,4 @@ In the implementation, this is optimized with caching and by running first the i
 
 Check the [Build and deploy](.github/workflows/deploy.yml) GitHub Actions workflow for implementation details.
 
-NOTICE: the workflow expects `secrets.AWS_ROLE` to be set with the ARN of the `GithubActionsRole` created by the `aws-afc-terraform-s3-backend-blueprint`, or an equivalent role that can authenticate via OIDC.
+NOTICE: the workflow expects `secrets.AWS_ROLE` to be set with the ARN of the `GithubActionsRole` created by the [aws-afc-terraform-s3-backend-blueprint](https://github.com/hisapy/aws-afc-terraform-s3-backend-blueprint), or an equivalent role that can authenticate via OIDC to the AWS account.
