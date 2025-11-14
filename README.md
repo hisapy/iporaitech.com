@@ -33,9 +33,11 @@ Check the [terraform](./terraform/) directory for more info.
 
 **TODO:** add terraform-docs
 
-### Requests to /es and redirecting non-www to www
+### Requests to /es and redirecting to www
 
-Those type of requests are handled by [cdn_request_handler.js](./terraform/cdn_request_handler.js) in the CloudFront distribution.
+The CloudFront distribution is configured with [cdn_request_handler.js](./terraform/cdn_request_handler.js) to redirect root domain requests to `www` (e.g., domain.com -> www.domain.com). This is possible because `www` is added as an alias to the distribution and as a subject alternative name (SAN) to the ACM Certificate.
+
+The handler also takes care of requests to `/es`. This is needed because CloudFront doesn't resolve `index.html` files in subdirectories, and `/es` is a subdirectory.
 
 ### About Route53 and DNS propagation
 
